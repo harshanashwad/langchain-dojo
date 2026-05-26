@@ -18,7 +18,7 @@ shot examples as a conversation between the user and assistant which makes the m
 Helps improve reliabilty of the model in well-defined tasks
 
 THE FLOW:
-Create a ChatPromptTemplate which is a list of dictionaries representing a conversation/ Each dictionary is a structured message with a role attached.
+Create a ChatPromptTemplate which is a list of dictionaries representing a conversation. Each dictionary is a structured message with a role attached.
 Irrespective of the role, each message that supprts dynamic insertion of keywords. {"topic": "black holes", "level": "beginner"},
 The system prompt could use {topic}, the user message could use {level} to explain how technical or simple the model's explanation about the topic would be
 
@@ -26,6 +26,8 @@ CONSTRUCTS INTRODUCED TODAY:
 ChatPromptTemplate (with messages and designated roles)
 '''
 
+from dotenv import load_dotenv
+load_dotenv()
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
@@ -78,7 +80,7 @@ print(chat_prompt)
 # So: ChatPromptTemplate = list of MessagePromptTemplates, not list of messages.
 
 # .invoke():                       invoke always takes dictionaries! use it on the chain with input of the ChatPromptTemplate needed
-# format_messsages():               When you manually want to get finalized list of actual message(s) from the template, use this. equivalent of format() in a PromptTemplate
+# format_messsages():              When you manually want to get finalized list of actual message(s) from the template, use this. equivalent of format() in a PromptTemplate
 
 '''
 ChatPromptTemplate with role-sepcific when you want to use a ChatModel while setting the conversation prefix (System prompt, set of messages with few shot 
