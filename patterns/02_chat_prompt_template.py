@@ -51,7 +51,7 @@ chain = cpt | llm | parser
 
 chain_output = chain.invoke({
     'level': 'Beginner',
-    'topic': 'Calculus'
+    'topic': 'String Theory'
 })
 
 print(chain_output)
@@ -83,7 +83,6 @@ print(chat_prompt)
 # format_messsages():              When you manually want to get finalized list of actual message(s) from the template, use this. equivalent of format() in a PromptTemplate
 
 '''
-ChatPromptTemplate with role-sepcific when you want to use a ChatModel while setting the conversation prefix (System prompt, set of messages with few shot 
+ChatPromptTemplate with role-specific prompt templates when you want to use a ChatModel while setting the conversation prefix (System prompt, set of messages with few shot 
 examples, expected model outputs, output constraints, tone and more)
-
 '''

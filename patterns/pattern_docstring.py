@@ -22,6 +22,16 @@ CONSTRUCTS INTRODUCED TODAY:
 - pipe operator |
 """
 
+"""
+PATTERN:
+DAY:
+
+PURPOSE: (one line — what + why)
+USE WHEN: (one line — the trigger condition)
+FLOW: input → ... → output
+NEW CONSTRUCTS: (bullet list)
+"""
+
 # ── code below ──────────────────────────────────────────
 
 

@@ -22,14 +22,13 @@ parser.get_format_instructions() — this is the key thing that's different from
 Pydantic BaseModel class
 '''
 
-from reprlib import aRepr
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, message
 from pydantic import BaseModel, Field
 from langchain_core.output_parsers import PydanticOutputParser
 from typing import Literal
 
-# Field() used to customize BaseModel attrubutes. Set default values and constraints.
+# Field() used to customize BaseModel attributes. Set default values and constraints.
 
 # Set additional properties for the fields using JSON Schema metadata
 # JSON Schema metadata: main ones are title (like a variable name), description, examples of the fields
@@ -57,7 +56,7 @@ prompt_template = ChatPromptTemplate(
 
 chain = prompt_template | llm | parser
 response = chain.invoke({
-    'ticket_text': 'My laptop keeps shutting down unusually even while plugged in. It has just been 3 days! How to fix it???'
+    'ticket_text': 'I was charged twice for my iPad purchase. Please arrange a refund!!'
 })
 
 print(type(response))
