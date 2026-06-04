@@ -1,0 +1,28 @@
+# requirements.txt
+
+# Core
+langchain
+langchain-core
+langchain-community
+langgraph
+langsmith
+
+# LLM providers (pick one or both)
+langchain-openai
+langchain-anthropic
+
+# Embeddings + Vector store (Week 2 RAG days)
+faiss-cpu
+tiktoken
+
+# Web search (Project 3)
+langchain-tavily   # or use: google-search-results (SerpAPI)
+
+# Data validation (PydanticOutputParser - Day 3)
+pydantic
+
+# Environment variables
+python-dotenv
+
+# Utilities
+jupyter  # optional but handy for experimenting
