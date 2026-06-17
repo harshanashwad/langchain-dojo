@@ -2,7 +2,7 @@
 PATTERN: RunnableParallel
 DAY: 6
 
-PURPOSE: RunnableParallel executes multiple operations (can be functions, Runnables) at the same time
+PURPOSE: RunnableParallel executes multiple operations (can be functions, Runnables, chains) at the same time
 
 USE WHEN: You want to branch from a certain point in a chain and do multiples operations at the same time. For example, running multiple chains together!
 
