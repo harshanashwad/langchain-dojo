@@ -59,7 +59,7 @@ embeddings = OpenAIEmbeddings(model='text-embedding-3-small')
 vector_store = Chroma.from_documents(documents=chunks, embedding=embeddings)
 vector_store_retriever = vector_store.as_retriever()
 
-# Helper to append chunks
+# Helper to append Document chunks
 def format_docs(docs):
     context = "\n\n".join(doc.page_content for doc in docs)
     print('Retrieved context:\n', context)
@@ -76,10 +76,10 @@ print(response)
 
 '''
 POST-ANALYSIS BLOCK
-The RunnablePassthrough.assign first populates context using another chain. Gets question the string, invokes retriever using it and then sends 
+The RunnablePassthrough.assign first populates context using another chain. Gets the question string, invokes retriever using it and then sends 
 retrieved chunks to get back a context string. This context string is added to the dict that invoked RunnablePassthrough. So following,
-we can invoke the prompt template to get the prompt, involke llm and complete the chain
+we can invoke the prompt template to get the prompt with question and context, involke llm and complete the chain
 
-One liner: Build a components needed for basic rag. Convert vector store into a retriever to make it usable in a chain and it becomes a RAG chain
+One liner: Build components needed for basic rag. Convert vector store into a retriever to make it usable in a chain and it becomes a RAG chain
 
 '''
