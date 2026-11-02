@@ -2,7 +2,7 @@
 PATTERN: itemgetter + RunnablePassthrough.assign
 DAY: 9
 
-PURPOSE (itemgetter): funciton to extract key from dict. It is from python's standard library 'operator'
+PURPOSE (itemgetter): function to extract key from dict. It is from python's standard library 'operator'
 PURPOSE (RunnablePassthrough.assign): To add keys to the input_dict that invoked the chain. 
 
 USE WHEN: When you want to enrich the input_dict before proceeding through the chain. Itemgetter as a clean alternative to using a lambda function
@@ -23,10 +23,8 @@ RunnablePassthrough.assign
 operator.itemgetter
 '''
 from dotenv import load_dotenv
-from langchain_core.runnables.base import chain
 load_dotenv()
 
-from multiprocessing import context
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser

@@ -42,7 +42,7 @@ clearly with cross-functional teams. FastAPI experience is a plus.
 # tone: "Rate the communication quality from 1-10 based on this resume: {resume}. Return a number only."
 
 
-from langchain_core.prompts import ChatPromptTemplate, prompt
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableParallel
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI

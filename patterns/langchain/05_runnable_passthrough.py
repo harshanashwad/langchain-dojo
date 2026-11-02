@@ -54,7 +54,7 @@ POST-ANALYSIS BLOCK
 RunnableParallel expects a Runnable. Cannot directly hardcode a string in it. So you wrap a lambda function that returns the string with RunnableLambda and assign your context that.
 And each keyword arguments could be processed in parallel and it returns a dict which can be passed on to the chain, like a prompt template (say)
 
-TypeError: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'str'>
+TypeError: Expected a Runnable, callable or dict. Instead got an unsupported type: <class 'str'>
 
 RunnablePassthrough(): A wrapper to just take the input as is and use it within a RunnableParallel block
 '''

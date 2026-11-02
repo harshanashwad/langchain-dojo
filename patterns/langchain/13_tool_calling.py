@@ -22,7 +22,6 @@ load_dotenv()
 
 
 from langchain_core.tools import tool
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, ToolMessage
 

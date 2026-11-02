@@ -23,7 +23,7 @@ load_dotenv()
 
 from pydantic import BaseModel, Field
 from langchain_core.output_parsers import PydanticOutputParser, StrOutputParser
-from langchain_core.prompts import PromptTemplate, ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableLambda, RunnableParallel, RunnableBranch
 from langchain_openai import ChatOpenAI
 from typing import Literal
@@ -98,7 +98,7 @@ print(final_response)
 '''
 POST-ANALYSIS BLOCK
 
-lambda function is good enough for the callable in each branch. Consider using RunnableBranch when the branching logic is a few lines of code from another function (say)
+lambda function is good enough for the callable in each branch. Consider using a named function instead of lambda if the branching logic is a few lines of code from (say)
 
 model_dump() comes in handy when you want to convert a BaseModel Class object (from pydantic parser) into a dictionary to use it downstream on another chain
 

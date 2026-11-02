@@ -39,10 +39,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
 from langchain_community.document_loaders import TextLoader
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
 
 # Loading
@@ -82,6 +80,5 @@ we can run semantic search against our documents using the embeddings of input q
 
 Vector stores are used for external memory (unlimited in theory). It's Critical to implement a RAG pipeline to augment prompts/context with relevant 
 info to fill knowledge gaps
-
 
 '''

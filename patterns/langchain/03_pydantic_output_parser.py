@@ -23,7 +23,7 @@ Pydantic BaseModel class
 '''
 
 from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate, message
+from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 from langchain_core.output_parsers import PydanticOutputParser
 from typing import Literal
@@ -76,4 +76,6 @@ print(response)
 # Literal: When you want output to be assigned from a list of values (categories, classes you are trying to assign with a model)
 
 # One sentence explanation: PydanticOutputParser helps enforce robust output contract to be followed by an LLM. Useful when model outputs are
-# used by downstream applications and systems and expect the output to be of a certain shape to handle correctly
+# used by downstream applications and systems and expect the output to be of a certain shape to handle correctly.
+
+# Key thing to note: the output schema is fed to the prompt template in the chain as a partial variable parameter. Not to the model.

@@ -48,7 +48,7 @@ llm = ChatOpenAI(model='gpt-4o-mini')
 def ticket_sanitizer(input_dict):
     return {
         **input_dict,
-        'ticket_text': input_dict['ticket_text'].strip().capitalize()
+        'ticket_text': input_dict['ticket_text'].strip().capitalize() # Overwrite ticket_text with this new value
     }
 
 chain =  RunnableLambda(ticket_sanitizer) | cpt | llm | parser
@@ -61,7 +61,7 @@ print(response)
 
 '''
 POST-ANALYSIS BLOCK
-RunnableLambda(): Wrapper around any custom function to make it usable in a LCEL chain. Ensure when you chain a custom function. It should return
+RunnableLambda(): Wrapper around any custom function to make it usable in a LCEL chain. Ensure when you chain a custom function, it should return
 what you would use to call the next component independently using invoke(). In our case, chat prompt template expects a dict, so you return
 that
 

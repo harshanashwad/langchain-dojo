@@ -67,7 +67,7 @@ def format_docs(docs):
     return context
 
 
-chain = RunnablePassthrough.assign(context= itemgetter('question') | vector_store_retriever | RunnableLambda(format_docs)) | cpt | llm | parser
+chain = RunnablePassthrough.assign(context= itemgetter('question') | vector_store_retriever | RunnableLambda(format_docs) ) | cpt | llm | parser
 response = chain.invoke({
     'question': 'Statistical analysis of the experiment?'
 })

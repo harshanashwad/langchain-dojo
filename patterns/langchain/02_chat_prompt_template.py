@@ -19,7 +19,7 @@ Helps improve reliabilty of the model in well-defined tasks
 
 THE FLOW:
 Create a ChatPromptTemplate which is a list of dictionaries representing a conversation. Each dictionary is a structured message with a role attached.
-Irrespective of the role, each message that supprts dynamic insertion of keywords. {"topic": "black holes", "level": "beginner"},
+Irrespective of the role, each message that supports dynamic insertion of keywords. {"topic": "black holes", "level": "beginner"},
 The system prompt could use {topic}, the user message could use {level} to explain how technical or simple the model's explanation about the topic would be
 
 CONSTRUCTS INTRODUCED TODAY:
