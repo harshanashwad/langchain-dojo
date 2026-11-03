@@ -46,27 +46,28 @@ def get_character_count(text: str) -> int:
 # print(get_character_count.args_schema.schema())
 
 llm = ChatOpenAI(model='gpt-4o-mini')
+tools = [get_character_count, get_word_count]
+tools_dict = {t.name: t for t in tools}
 
-llm_with_tools = llm.bind_tools([get_character_count, get_word_count])
-response = llm_with_tools.invoke("How many words are in this sentence: 'The quick brown fox jumps over the lazy dog'")
-
+llm_with_tools = llm.bind_tools(tools)
+response = llm_with_tools.invoke("How many characters are in this sentence: 'The quick brown fox jumps over the lazy dog'")
+print(response.tool_calls)
 
 # Execute the tool
 tool_call = response.tool_calls[0]
-# invoking with this dict: {'text': 'The quick brown fox jumps over the lazy dog'}
-tool_result = get_word_count.invoke(tool_call['args'])
+tool_result = tools_dict[tool_call['name']].invoke(tool_call['args'])
 
 print(tool_result)
 
-# Feed result back to LLM
+# # Feed result back to LLM
 messages = [
-    HumanMessage("How many words are in: 'The quick brown fox jumps over the lazy dog'"),
+    HumanMessage("How many characters are in: 'The quick brown fox jumps over the lazy dog'"),
     response,  # the AIMessage with tool_calls
     ToolMessage(content=str(tool_result), tool_call_id=tool_call['id'])
 ]
 
-final_response = llm_with_tools.invoke(messages)
-print(final_response.content)
+# final_response = llm_with_tools.invoke(messages)
+# print(final_response.content)
 
 '''
 POST-ANALYSIS BLOCK
@@ -74,7 +75,7 @@ POST-ANALYSIS BLOCK
 @tool decorator makes any function a tool that is LangChain aware. LLM can use tools using bind_tools([list_of_tools])
 name and description are two keys to get the function name and description (docstring)
 
-Invoke llm with tool access with a query. If llm decided to use any tool, there is tool_calls key in the response_metadata. We can call that 
+Invoke llm with tool access with a query. If llm decided to use any tool, there is tool_calls key in the response. We can call that 
 function and get the response as a ToolMessage. For final response, we create a list of messages with the tool response and use it to invoke the llm
 
 For static conversation structure starting with a system prompt -> Use ChatPromptTemplate
