@@ -96,6 +96,6 @@ def archive_run(run_id: Annotated[str, "The run ID eg. 'r09'"]) -> str:
     return f'Run with run_id: {run_id} has been successfully archived'
 
 
-results = archive_run.invoke({"run_id": "787"})
-
-print(results)
+if __name__ == '__main__':
+    results = archive_run.invoke({"run_id": "787"})
+    print(results)
