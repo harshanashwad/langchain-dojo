@@ -76,9 +76,26 @@ def get_run(run_id: Annotated[str, "The run ID eg. 'r09'"]) -> dict:
     
     return run
 
-results = search_runs.invoke({"metric_thresholds": [{"metric": "accuracy", "threshold": 0.9, "comparison": "lt"}]})
+@tool
+def archive_run(run_id: Annotated[str, "The run ID eg. 'r09'"]) -> str:
+    '''
+    Sets status of the run identified by run_id to archived. Returns already archived if the status of the run is 'archived'
+    '''
+    run = next((r for r in runs if r['run_id'] == run_id), None)
 
-for r in results:
-    print(r)
-    print()
-    print()
+    if run is None:
+        return f'No run with run_id: {run_id} is found'
+    
+    if run['status'] == 'archived':
+        return f'Run with run_id: {run_id} is already archived'
+
+    run['status'] = 'archived'
+    with open(RUNS_PATH, "w") as f:
+        json.dump(runs, f, indent=2)
+
+    return f'Run with run_id: {run_id} has been successfully archived'
+
+
+results = archive_run.invoke({"run_id": "787"})
+
+print(results)
