@@ -63,6 +63,19 @@ def search_runs(dataset: Annotated[Literal['imdb', 'cifar10', 'mnist', 'fraud-tx
     
     return results
 
+@tool
+def get_run(run_id: Annotated[str, "The run ID eg. 'r09'"]) -> dict:
+    '''
+    Get full details of one run by its run_id, including notes.
+    '''
+
+    run = next((r for r in runs if r['run_id'] == run_id), None)
+
+    if run is None:
+        return {'error': f'No run with run_id: {run_id} is found'}
+    
+    return run
+
 results = search_runs.invoke({"metric_thresholds": [{"metric": "accuracy", "threshold": 0.9, "comparison": "lt"}]})
 
 for r in results:
