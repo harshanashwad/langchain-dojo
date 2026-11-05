@@ -1,13 +1,14 @@
 from langchain_core.tools import tool
-from langchain_openai import ChatOpenAI
 from typing import Annotated, Literal
 from pydantic import BaseModel, Field
 import operator
+import os
 
 import json
 from pathlib import Path
 
-RUNS_PATH = Path(__file__).parent / "runs.json"
+# RUNS_PATH = Path(__file__).parent / "runs.json"
+RUNS_PATH = Path(os.environ.get("RUNS_PATH", Path(__file__).parent / "runs.json"))
 
 OPS = {
             "gt": operator.gt,

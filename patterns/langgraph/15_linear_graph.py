@@ -9,7 +9,7 @@ NEW CONSTRUCTS:
 TypedDict as GraphState: to define state of graph as a schema
 StateGraph - a graph builder that takes in the defined state as the graph schema
 node - a python function that reads current graph state and sends partial updates
-edge - used to define routing rules across edges
+edge - used to define routing rules across nodes
 
 compile() - The graph made by builder is validated and can be invoked after compile
 
@@ -99,7 +99,7 @@ def analyze(state: State) -> State:
 
 # Building and wiring the graph
 
-builder = StateGraph(State)
+builder = StateGraph[State, None, State, State](State)
 builder.add_node(explain_topic)
 builder.add_node(quiz_questions)
 builder.add_node(analyze)
